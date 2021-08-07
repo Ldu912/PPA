@@ -10,15 +10,13 @@ const createToken = (id) => {
 };
 
 module.exports.signUp = async (req, res) => {
-  console.log(req.body);
   const { pseudo, email, password } = req.body;
 
   try {
     const user = await UserModel.create({ pseudo, email, password });
     res.status(201).json({ user: user._id });
   } catch (err) {
-    const errors = signUpErrors(err);
-    res.status(200).send({ errors });
+    res.status(200).send({ err });
   }
 };
 
@@ -31,8 +29,7 @@ module.exports.signIn = async (req, res) => {
     res.cookie("jwt", token, { httpOnly: true, maxAge });
     res.status(200).json({ user: user._id });
   } catch (err) {
-    const errors = signInErrors(err);
-    res.status(200).json({ errors });
+    res.status(200).json({ err });
   }
 };
 

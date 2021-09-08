@@ -1,5 +1,5 @@
 .profil-page {
-  margin: 80px auto 0;
+  margin: 170px auto 0;
   max-width: 1200px;
 
   .icons {
@@ -267,7 +267,7 @@
       overflow: auto;
       transform: scaleY(0);
       transform-origin: center;
-      animation: modal .5s forwards;
+      animation: modal 0.5s forwards;
 
       h3 {
         min-width: 200px;

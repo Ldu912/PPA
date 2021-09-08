@@ -1,14 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
-import { applyMiddleware, createStore } from "redux";
+import "./styles/index.scss";
 import { Provider } from "react-redux";
+import { applyMiddleware, createStore } from "redux";
 import thunk from "redux-thunk";
 import rootReducer from "./reducers";
-import { composeWithDevTools } from "redux-devtools-extension";
 import { getUsers } from "./actions/users.actions";
-
-import "./styles/index.scss";
+// dev tools
+import { composeWithDevTools } from "redux-devtools-extension";
+import { getPosts } from "./actions/post.actions";
 
 const store = createStore(
   rootReducer,
@@ -16,6 +17,7 @@ const store = createStore(
 );
 
 store.dispatch(getUsers());
+store.dispatch(getPosts());
 
 ReactDOM.render(
   <Provider store={store}>
